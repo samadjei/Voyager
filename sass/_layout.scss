@@ -13,7 +13,7 @@
   font-size: 1.2rem;
   height: 7rem;
   background-color: #fff;
-  border-bottom: var(--color-grey-light-2);
+  border-bottom: 1px solid var(--color-grey-light-2);
 }
 
 .content {
@@ -30,7 +30,6 @@
 }
 
 .hotel-view {
-  background-color: pink;
-  height: 80rem;
+  background-color: #fff;
   flex: 1;
 }

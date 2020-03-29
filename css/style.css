@@ -11,11 +11,13 @@
   --color-grey-dark-3: #999;
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3); }
 
+* {
+  margin: 0;
+  padding: 0; }
+
 a *,
 *::after,
 *::before {
-  margin: 0;
-  padding: 0;
   /* automatically inherit box-sizing from the body element */
   box-sizing: inherit; }
 
@@ -52,7 +54,7 @@ body {
   font-size: 1.2rem;
   height: 7rem;
   background-color: #fff;
-  border-bottom: var(--color-grey-light-2); }
+  border-bottom: 1px solid var(--color-grey-light-2); }
 
 .content {
   display: flex; }
@@ -65,8 +67,7 @@ body {
   justify-content: space-between; }
 
 .hotel-view {
-  background-color: pink;
-  height: 80rem;
+  background-color: #fff;
   flex: 1; }
 
 .logo {
@@ -103,8 +104,8 @@ body {
     .search__button:active {
       transform: translateY(2px); }
   .search__icon {
-    height: 1.7rem;
-    width: 1.7rem;
+    height: 2rem;
+    width: 2rem;
     fill: var(--color-grey-dark-3);
     margin-top: 0.3rem; }
 
@@ -147,8 +148,7 @@ body {
 .side-nav {
   font-size: 1.4rem;
   list-style: none;
-  margin-top: 3.5rem;
-  margin-left: -40px; }
+  margin-top: 3.5rem; }
   .side-nav__item {
     position: relative; }
     .side-nav__item:not(:last-child) {
@@ -189,3 +189,77 @@ body {
   color: var(--color-grey-light-4);
   text-align: center;
   padding: 2.5rem; }
+
+.gallery {
+  display: flex; }
+  .gallery__photo {
+    width: 100%;
+    display: block; }
+
+.overview {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-grey-light-2); }
+  .overview__heading {
+    font-size: 2.25rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1.5rem 3rem; }
+  .overview__stars {
+    display: flex;
+    margin-right: auto; }
+  .overview__icon-star, .overview__icon-location {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: var(--color-primary); }
+  .overview__location {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center; }
+  .overview__icon-location {
+    margin-right: 0.5rem; }
+  .overview__rating {
+    background-color: var(--color-primary);
+    margin-left: 3rem;
+    color: #fff;
+    align-self: stretch;
+    padding: 0 2.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+  .overview__rating-average {
+    font-size: 2.25rem;
+    font-weight: 300;
+    margin-bottom: -0.3rem; }
+  .overview__rating-count {
+    font-size: 0.8rem;
+    text-transform: uppercase; }
+
+.btn-inline {
+  border: none;
+  color: var(--color-primary);
+  font-size: inherit;
+  border-bottom: 1px solid currentColor;
+  cursor: pointer;
+  padding-bottom: 0.2rem;
+  display: inline-block;
+  background-color: transparent;
+  transition: all 0.2s; }
+  .btn-inline:hover {
+    color: var(--color-grey-dark-1); }
+  .btn-inline:focus {
+    outline: none;
+    animation: pulsate 1s infinite; }
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+    box-shadow: none; }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.25); }
+  100% {
+    transform: scale(1);
+    box-shadow: none; } }
