@@ -12,6 +12,12 @@
   justify-content: center;
   align-items: center;
 
+  @media only screen and (max-width: $bp-smallest) {
+    order: 1;
+    flex: 0 0 100%;
+    background-color: var(--color-grey-light-2);
+  }
+
   &__input {
     font-family: inherit;
     font-size: inherit;
@@ -28,11 +34,19 @@
       outline: none;
       width: 100%;
       background-color: var(--color-grey-light-3);
+
+      @media only screen and (max-width: $bp-smallest) {
+        background-color: var(--color-grey-light-2);
+      }
     }
   }
 
   &__input :focus + &__button {
     background-color: var(--color-grey-light-3);
+
+    @media only screen and (max-width: $bp-smallest) {
+      background-color: var(--color-grey-light-2);
+    }
   }
   &__button {
     border: none;
@@ -114,11 +128,26 @@
   list-style: none;
   margin-top: 3.5rem;
 
+  @media only screen and (max-width: $bp-medium) {
+    // puts them side by side
+    display: flex;
+    margin: 0;
+  }
+
   &__item {
     position: relative;
 
     &:not(:last-child) {
       margin-bottom: 0.5rem;
+
+      @media only screen and (max-width: $bp-medium) {
+        margin: 0;
+      }
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      // they will all occupy the same space
+      flex: 1;
     }
   }
 
@@ -146,15 +175,30 @@
 
   &__link:link,
   &__link:visited {
-    display: flex;
-    align-items: center;
     color: var(--color-grey-light-1);
     text-decoration: none;
     text-transform: uppercase;
     display: block;
     padding: 1.5rem 3rem;
-    position: relative;
     z-index: 10;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    @media only screen and (max-width: $bp-medium) {
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      flex-direction: column;
+      padding: 1.3rem 0.5rem;
+    }
+
+    @media only screen and (max-width: $bp-xs) {
+      padding: 1rem 0.2rem;
+    }
   }
 
   &__icon {
@@ -163,6 +207,13 @@
     margin-right: 1rem;
     // takes the current colour of its parent element
     fill: currentColor;
+
+    @media only screen and (max-width: $bp-small) {
+      margin-right: 0;
+      margin-bottom: 0.7rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 }
 
@@ -172,6 +223,10 @@
   color: var(--color-grey-light-4);
   text-align: center;
   padding: 2.5rem;
+
+  @media only screen and (max-width: $bp-medium) {
+    display: none;
+  }
 }
 
 // Gallery
@@ -195,11 +250,26 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1.5rem 3rem;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+      padding: 1.25rem 2rem;
+    }
+
+    @media only screen and (max-width: $bp-xs) {
+      font-size: 1.3rem;
+      padding: 0.8rem 1.5rem;
+    }
   }
   &__stars {
     display: flex;
+    font-size: 1.8rem;
     // only occupies the space it needs to create some space
     margin-right: auto;
+
+    @media only screen and (max-width: $bp-xs) {
+      font-size: 1.2rem;
+    }
   }
   &__icon-star,
   &__icon-location {
@@ -211,10 +281,18 @@
     font-size: 1.2rem;
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: $bp-xs) {
+      font-size: 1rem;
+    }
   }
 
   &__icon-location {
     margin-right: 0.5rem;
+
+    @media only screen and (max-width: $bp-xs) {
+      margin-right: 0.2rem;
+    }
   }
   &__rating {
     background-color: var(--color-primary);
@@ -226,15 +304,36 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @media only screen and (max-width: $bp-small) {
+      padding: 0 1.5rem;
+    }
+    @media only screen and (max-width: $bp-xs) {
+      padding: 0 1rem;
+    }
   }
   &__rating-average {
     font-size: 2.25rem;
     font-weight: 300;
     margin-bottom: -0.3rem;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 1.8rem;
+    }
+    @media only screen and (max-width: $bp-xs) {
+      font-size: 1.4rem;
+    }
   }
   &__rating-count {
     font-size: 0.8rem;
     text-transform: uppercase;
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 0.5rem;
+    }
+    @media only screen and (max-width: $bp-xs) {
+      font-size: 0.3rem;
+    }
   }
 }
 
@@ -301,6 +400,11 @@
   display: flex;
   flex-wrap: wrap;
 
+  @media only screen and (max-width: $bp-xs) {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
   // get two elements side by side
   &__item {
     flex: 0 0 50%;
@@ -318,12 +422,15 @@
     // background-image: url(../img/chevron-thin-right.svg);
     // background-size: cover;
 
-    // Newer browsers
-    background-color: var(--color-primary);
-    -webkit-mask-image: url(../img/chevron-thin-right.svg);
-    -webkit-mask-size: cover;
-    mask-image: url(../img/chevron-thin-right.svg);
-    mask-size: cover;
+    // Newer browsers - masks
+    @supports (-webkit-mask-image: url()) or (-webkit-mask-image: url()) {
+      background-color: var(--color-primary);
+      -webkit-mask-image: url(../img/chevron-thin-right.svg);
+      -webkit-mask-size: cover;
+      mask-image: url(../img/chevron-thin-right.svg);
+      mask-size: cover;
+      background-image: none;
+    }
   }
 }
 // Recommend
@@ -333,9 +440,22 @@
   font-size: 1.3rem;
   color: var(--color-grey-dark-3);
 
+  @media only screen and (max-width: $bp-small) {
+    justify-content: center;
+  }
+
   &__count {
     margin-right: auto;
+
+    @media only screen and (max-width: $bp-small) {
+      margin-right: 0;
+    }
   }
+
+  &__friend {
+    display: flex;
+  }
+
   &__photo {
     // includes the padding and the border into the width and the height of the element
     box-sizing: content-box;
@@ -346,7 +466,7 @@
 
     // allows all the images to overlap apart from the last one
     &:not(:last-child) {
-      margin-right: -1.5rem;
+      margin-right: -2rem;
     }
   }
 }
@@ -359,6 +479,11 @@
   margin-bottom: 3.5rem;
   position: relative;
   overflow: hidden;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
 
   &__text {
     margin-bottom: 2rem;
@@ -419,11 +544,20 @@
   padding: 3.5rem 0;
   text-align: center;
 
+  @media only screen and (max-width: $bp-medium) {
+    padding: 2.5rem 0;
+  }
+
   &__book-now {
     font-size: 2rem;
     font-weight: 300;
     text-transform: uppercase;
     margin-bottom: 2.5rem;
+
+    @media only screen and (max-width: $bp-xs) {
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
   }
 }
 
@@ -438,6 +572,10 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
+
+  @media only screen and (max-width: $bp-xs) {
+    font-size: 1.2rem;
+  }
 
   &__visible {
     display: inline-block;
